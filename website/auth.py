@@ -16,6 +16,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in Successfully!', category='success')
+                user = User.query.filter_by(Username=Username).first()
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
@@ -61,6 +62,7 @@ def sign_up():
             new_user = User(email=email, fullname=fullname, Username=Username, password=generate_password_hash(password1, method='sha256'), CoinNum = 0)
             db.session.add(new_user)
             db.session.commit()
+            user = User.query.filter_by(Username=Username).first()
             flash('Account Created! Log in to access your account', category='success')
             return redirect(url_for('auth.login'))
 
