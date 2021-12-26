@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Profile - CryptoCoin{% endblock %} 
+
+{% block content %}
+<br />
+<h1 align="center">Your Profile</h1>
+<p>You currently have {{ user.CoinNum }} CryptoCoin</p>
+<br />
+<p>The current CryptoCoin price is ${{ CryptoPrice }}</p>
+<br />
+<h3 align="center">History</h3>
+<ul class="list-group list-group-flush" id="history">
+    {% for CoinsHistory in user.CoinsHistory %}
+    <li><p>{{ CoinsHistory.CoinHistory }} on {{ CoinsHistory.date }}</p></li>
+    {% endfor %}
+</ul>
+{% endblock %}

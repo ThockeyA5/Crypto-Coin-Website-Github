@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Login - CryptoCoin{% endblock %} 
+
+{% block content %}
+<form method="POST">
+    <br />
+    <h3 align="center">Login</h3>
+    <div class="form-group">
+        <label for="Username">Username</label>
+        <input 
+            type="Username" 
+            class="form-control" 
+            id="Username" 
+            name="Username" 
+            placeholder="Enter Username" 
+        />
+    <br />
+        <label for="Password">Password</label>
+        <input 
+            type="Password" 
+            class="form-control" 
+            id="Password" 
+            name="Password" 
+            placeholder="Enter Password" 
+        />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Log In</button>
+</form>
+{% endblock %}
