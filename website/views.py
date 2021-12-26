@@ -19,14 +19,14 @@ views = Blueprint('views', __name__)
 @views.route('/')
 @login_required
 def home():
-    return render_template("home.html", user = current_user, CryptoPrice = open("codefiles/Price.CC.txt").read())
+    return render_template("home.html", user = current_user, CryptoPrice = open("website/codefiles/Price.CC.txt").read())
 
 @views.route('/mine', methods=['GET', 'POST'])
 @login_required
 def mine():
     if request.method == 'POST':
         code = request.form.get('code')
-        CryptoCode = open("codefiles/CodeCC.txt").read()
+        CryptoCode = open("website/codefiles/CodeCC.txt").read()
         if code == CryptoCode:
             mining_history = Coins(CoinHistory='Mined a CryptoCoin', user_id = current_user.id)
             db.session.add(mining_history)
@@ -54,7 +54,7 @@ def buy():
           if int(buy) < 1:
               flash("Input must be at least 1", category = 'error')
           else:
-              CryptoPrice = open("codefiles/Price.CC.txt").read()
+              CryptoPrice = open("website/codefiles/Price.CC.txt").read()
               bought = Coins(CoinHistory='Bought ' + buy + ' CryptoCoin for $' + CryptoPrice, user_id = current_user.id)
               db.session.add(bought)
               updateCoins = User.query.filter_by(id = current_user.id).first()
@@ -79,7 +79,7 @@ def sell():
             elif int(sell) > updateCoins.CoinNum:
                 flash('You don\'t have enough CryptoCoin!', category = 'error')
             else:
-                CryptoPrice = open("codefiles/Price.CC.txt").read()
+                CryptoPrice = open("website/codefiles/Price.CC.txt").read()
                 sold = Coins(CoinHistory='Sold ' + sell + ' CryptoCoin for $' + CryptoPrice, user_id = current_user.id)
                 db.session.add(sold)
                 updateCoins = User.query.filter_by(id = current_user.id).first()
