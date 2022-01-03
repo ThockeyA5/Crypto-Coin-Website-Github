@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}Mine - CryptoCoin{% endblock %} 
+
+{% block content %}
+<br />
+<form method="POST">
+    <h3 align="center">Mine</h3>
+    <div class="form-group">
+        <label for="code">What code do you want to attempt?</label>
+        <input
+          type="code"
+          class="form-control"
+          id="code"
+          name="code"
+         placeholder="Enter 4-digit code"
+       />
+     </div>
+     <br />
+     <button type="submit" class="btn btn-primary">Submit Code</button>
+{% endblock %}
